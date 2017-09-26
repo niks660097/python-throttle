@@ -2,6 +2,8 @@ import time
 import asyncio
 import functools
 
+now_milliseconds = lambda : int(round(time.time()*1000))
+
 def throttle(rps=50):#Requests per second, todo change it arbitrary req/time
     def decorator(func):
         count = 0

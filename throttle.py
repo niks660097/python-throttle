@@ -2,7 +2,7 @@ import time
 import asyncio
 import functools
 
-def throttle(rps=50):
+def throttle(rps=50):#Requests per second, todo change it arbitrary req/time
     def decorator(func):
         count = 0
         first_req_time = None

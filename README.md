@@ -1,2 +1,2 @@
-# throttle
-Throttle execution of python co-routine or function.
+# Throttle
+Throttle execution of a python co-routine or function.

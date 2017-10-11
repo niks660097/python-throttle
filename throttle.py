@@ -50,8 +50,8 @@ def async_throttle(rps=50):
             if count == rps:
                 diff = now_milliseconds() - first_req_time
                 if diff < 1000:
-                    time.sleep(1 if diff == 0 else 1 - diff/10**len(str(diff)))
-                    return await wrapped(*args, **kwargs)
+                    asyncio.sleep(1 if diff == 0 else 1 - diff/1000)
+                    return await asyncio.ensure_future(wrapped(*args, **kwargs))
 
             if now_milliseconds() - first_req_time >= 1000:
                 count = 0

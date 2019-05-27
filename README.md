@@ -1,17 +1,10 @@
 # Throttle
-Throttle execution of a python co-routine or function.
+Throttling execution of a python function.
 
 Usage
+from throttle import throttle
 
 ```
-async def test_throttle():
-    current_id = 0
-    @async_throttle(rps=50)
-    async def foo():
-        nonlocal current_id
-        current_id += 1
-        print('CURRENT ID', current_id)
-    tasks = [[foo() for i in range(500)] for j in range(10)]
-    for gather_ind, t in enumerate(tasks):
-        res = await asyncio.gather(*t)
-```
+@throttle(rps=5)
+def foo(*args, **kwargs):
+    print("LIMITED RESOURCE")
